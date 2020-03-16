@@ -8,7 +8,7 @@ public class BACRunner {
     // Maximum length of the secret word.
     public static final int MAXLEN = 15;
     // How many rounds to play.
-    public static final int ROUNDS = 20;
+    public static final int ROUNDS = 10;
     // The seed value of the pseudorandom number generator for words.
     public static final int SEED = 4242;
     // Mercy limit after which the word is considered to be guessed.
@@ -77,7 +77,7 @@ public class BACRunner {
             cowsSoFar.add(bc[1]);            
         }
         System.out.println("");
-        return guessesSoFar.size() - 1;
+        return guessesSoFar.size();
     }
     
     
