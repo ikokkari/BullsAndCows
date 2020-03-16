@@ -67,19 +67,19 @@ public class BACRunner {
         List<Integer> cowsSoFarP = Collections.unmodifiableList(cowsSoFar);
         String guess = "";
         int[] bc = new int[2];
-        System.out.print("[" + secret + "]: ");
+        System.out.print("[" + secret + "]:");
         while(!secret.equals(guess) && mercy-- > 0) {
             guess = player.guess(secret.length(), guessesSoFarP, bullsSoFarP, cowsSoFarP);
             countBullsAndCows(guess, secret, bc);
-            System.out.print(guess + " ");
+            System.out.print(" " + guess);
+            System.out.flush();
             guessesSoFar.add(guess);
             bullsSoFar.add(bc[0]);
             cowsSoFar.add(bc[1]);            
         }
         System.out.println("");
         return guessesSoFar.size();
-    }
-    
+    }    
     
     private static int playBullsAndCows(BACPlayer player) throws IOException {
         Scanner s = new Scanner(new File("words_alpha.txt"));
