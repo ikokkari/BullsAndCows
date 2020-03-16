@@ -1,5 +1,5 @@
 # Bulls And Cows With Words
-The classic game of Bulls and Cows but played with those English language words that have no repeated characters, instead of the plain old symmetric and boring space of integers without repeating digits.
+The classic game of [Bulls and Cows](https://en.wikipedia.org/wiki/Bulls_and_Cows) but played with those English language words that have no repeated characters, instead of the plain old symmetric and boring space of integers without repeating digits.
 
 A fun, educational and interesting programming exercise that offers something for everybody in a CS1/CS2 course so that some kind of rudimentary version of the player is straightforward to get started with, but its various parts and decisions can be endlessly optimized and streamlined for gradual but measurable improvement.
 
