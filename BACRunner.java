@@ -1,3 +1,5 @@
+// Version March 16, 2020
+
 import java.util.*;
 import java.io.*;
 
@@ -49,12 +51,15 @@ public class BACRunner {
             seen[c] = true;
         }
         int bulls = 0, cows = 0;
-        for(int i = 0; i < secret.length(); i++) {
-            int c1 = ((int)secret.charAt(i)) - 'a';
-            int c2 = ((int)guess.charAt(i)) - 'a';
-            if(c1 == c2) { bulls++; }
-            else if(seen[c2]) { cows++; }
+        try {
+            for(int i = 0; i < secret.length(); i++) {
+                int c1 = ((int)secret.charAt(i)) - 'a';
+                int c2 = ((int)guess.charAt(i)) - 'a';
+                if(c1 == c2) { bulls++; }
+                else if(seen[c2]) { cows++; }
+            }
         }
+        catch(Exception e) { bulls = cows = 0; }
         out[0] = bulls; out[1] = cows;
     }
     
@@ -69,7 +74,13 @@ public class BACRunner {
         int[] bc = new int[2];
         System.out.print("[" + secret + "]:");
         while(!secret.equals(guess) && mercy-- > 0) {
-            guess = player.guess(secret.length(), guessesSoFarP, bullsSoFarP, cowsSoFarP);
+            try {
+                guess = player.guess(secret.length(), guessesSoFarP, bullsSoFarP, cowsSoFarP);
+            }
+            catch(Exception e) {
+                guess = "";
+                for(int i = 0; i < secret.length(); i++) { guess += (char)('a' + i); }
+            }
             countBullsAndCows(guess, secret, bc);
             System.out.print(" " + guess);
             System.out.flush();
