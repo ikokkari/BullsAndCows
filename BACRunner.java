@@ -1,4 +1,4 @@
-// Version March 16, 2020
+// Version March 21, 2020
 
 import java.util.*;
 import java.io.*;
@@ -10,7 +10,7 @@ public class BACRunner {
     // Maximum length of the secret word.
     public static final int MAXLEN = 15;
     // How many rounds to play.
-    public static final int ROUNDS = 10;
+    public static final int ROUNDS = 50;
     // The seed value of the pseudorandom number generator for words.
     public static final int SEED = 4242;
     // Mercy limit after which the word is considered to be guessed.
