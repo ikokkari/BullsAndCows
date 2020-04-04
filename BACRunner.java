@@ -10,16 +10,16 @@ public class BACRunner {
     // Maximum length of the secret word.
     public static final int MAXLEN = 15;
     // How many rounds to play.
-    public static final int ROUNDS = 50;
+    public static final int ROUNDS = 20;
     // The seed value of the pseudorandom number generator for words.
-    public static final int SEED = 4242;
+    public static final int SEED = 10101;
     // Mercy limit after which the word is considered to be guessed.
     public static final int MERCY = 20;
     
     // A word is acceptable is it contains no duplicated letters.
     private static boolean acceptable(String s) {
         if(MINLEN <= s.length() && s.length() <= MAXLEN) {
-            boolean[] seen = new boolean[26]; // words_alpha only uses 26 lowercase letters
+            boolean[] seen = new boolean[26]; // words_alpha.txt uses 26 lowercase letters
             for(int i = 0; i < s.length(); i++) {
                 int c = ((int)s.charAt(i)) - 'a';
                 if(seen[c]) { return false; }
@@ -35,7 +35,7 @@ public class BACRunner {
     /**
      * Count the number of bulls and cows in the guess word with respect to the secret word.
      * You might want to call this method from your player code instead of duplicating the
-     * logic. The logic works since words_alpha file uses only 26 English lowercase letters.
+     * logic. The logic works since {@code words_alpha.txt} uses only 26 English lowercase letters.
      * @param guess The current guess word.
      * @param secret The secret word.
      * @param out Two-element array in which the answer (bulls, cows) is written.
@@ -101,6 +101,7 @@ public class BACRunner {
                 words.add(word);
             }
         }
+        Collections.sort(words); // Had to add this since words_alpha.txt is not sorted
         player.initializeWordList(Collections.unmodifiableList(words));
         int score = 0;
         Random rng = new Random(SEED);        
